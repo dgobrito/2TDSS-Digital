@@ -74,6 +74,14 @@ public class ClienteBO {
 			em.close();
 		}
 	}
+
+
+	public List<Cliente> buscarPorNome(String nome) {
+		ClienteDAO dao = new ClienteDAOImpl(
+			EntityManagerFactorySingleton.getInstance()
+			.createEntityManager());
+		return dao.buscarPorNome(nome);
+	}
 	
 }
 

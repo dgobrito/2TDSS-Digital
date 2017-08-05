@@ -7,22 +7,30 @@
 
 	<ui:composition template="_template.xhtml">
 		<ui:define name="container">
-			<h:form>
-				<p:messages/>
-				<h:panelGrid columns="2">
-					<p:outputLabel value="Nome" for="nome"/>
-					<p:inputText value="#{clienteBean.cliente.nome}" id="nome"/>
-					
-					<p:outputLabel value="CPF" for="cpf"/>
-					<p:inputText value="#{clienteBean.cliente.cpf}" id="cpf"/>
-					
-					<p:outputLabel value="Data Nascimento" for="dt"/>
-					<p:calendar pattern="dd/MM/yyyy" id="dt"
-						value="#{clienteBean.cliente.dataNascimento.time}"/>
-					
-					<p:commandButton action="#{clienteBean.cadastrar()}" value="Gravar"/>
-				</h:panelGrid>
-			</h:form>
+			<p:panel header="Cadastro de Cliente"
+				toggleable="true">
+				<h:form>
+					<p:messages/>
+					<p:growl/>
+					<h:panelGrid columns="2">
+						<p:outputLabel value="Nome" for="nome"/>
+						<p:inputText value="#{clienteBean.cliente.nome}" id="nome"/>
+						
+						<p:outputLabel value="CPF" for="cpf"/>
+						<p:inputMask mask="999.999.999-99" value="#{clienteBean.cliente.cpf}" id="cpf"/>
+						
+						<p:outputLabel value="Data Nascimento" for="dt"/>
+						<p:calendar pattern="dd/MM/yyyy" id="dt"
+							value="#{clienteBean.cliente.dataNascimento.time}"/>
+						
+						<p:outputLabel value="Rating" for="rating"/>
+						<p:rating stars="10" id="rating" 
+								value="#{clienteBean.cliente.rating}"/>	
+						
+						<p:commandButton action="#{clienteBean.cadastrar()}" value="Gravar"/>
+					</h:panelGrid>
+				</h:form>
+			</p:panel>
 		</ui:define>
 	</ui:composition>
 </html>

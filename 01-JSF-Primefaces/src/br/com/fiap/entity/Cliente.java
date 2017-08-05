@@ -21,6 +21,8 @@ public class Cliente {
 	private String cpf;
 	
 	private Calendar dataNascimento;
+	
+	private int rating;
 
 	public int getCodigo() {
 		return codigo;
@@ -52,6 +54,14 @@ public class Cliente {
 
 	public void setDataNascimento(Calendar dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
 	}
 	
 }
