@@ -22,6 +22,14 @@ public class ClienteDAOImpl extends GenericDAOImpl<Cliente, Integer> implements 
 			.getResultList();
 	}
 
+	@Override
+	public List<String> completarPorNome(String texto) {		
+		return em.createQuery("select c.nome from Cliente c"
+				+ " where c.nome like :n",String.class)
+				.setParameter("n", "%"+texto+"%")
+				.getResultList();
+	}
+
 	
 
 }

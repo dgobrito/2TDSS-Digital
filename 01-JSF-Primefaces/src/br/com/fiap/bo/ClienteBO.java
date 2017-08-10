@@ -82,6 +82,12 @@ public class ClienteBO {
 			.createEntityManager());
 		return dao.buscarPorNome(nome);
 	}
+
+
+	public List<String> completarPorNome(String texto) {
+		ClienteDAO dao = new ClienteDAOImpl(fabrica.createEntityManager());
+		return dao.completarPorNome(texto);
+	}
 	
 }
 

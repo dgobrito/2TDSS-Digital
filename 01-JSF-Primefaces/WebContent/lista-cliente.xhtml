@@ -11,18 +11,22 @@
 				<h:form>
 					<h:panelGrid columns="3">
 						<p:outputLabel value="Nome" for="nome"/>
-						<p:inputText value="#{listaClienteBean.nome}" 
+						<p:autoComplete value="#{listaClienteBean.nome}" 
+							completeMethod="#{listaClienteBean.completar}"
 							id="nome"/>
 						<p:commandButton value="Buscar"
 							update="tabela"
 							action="#{listaClienteBean.buscar}"/>										
 					</h:panelGrid>
 				</h:form>
-				<p:dataTable id="tabela" value="#{listaClienteBean.lista}" var="c">
-					<p:column headerText="Nome">
+				<p:growl></p:growl>
+				<p:dataTable 
+					paginator="true" rows="5" paginatorPosition="bottom"
+					id="tabela" value="#{listaClienteBean.lista}" var="c">
+					<p:column headerText="Nome" sortBy="#{c.nome}">
 						#{c.nome}
 					</p:column>
-					<p:column headerText="CPF">
+					<p:column headerText="CPF" sortBy="#{c.cpf}">
 						#{c.cpf}
 					</p:column>
 					<p:column headerText="Data Nascimento">
@@ -33,6 +37,17 @@
 					<p:column headerText="Rating">
 						<p:rating value="#{c.rating}" stars="10"
 							readonly="true"/> 
+					</p:column>
+					<p:column>
+						<p:commandButton action="cliente" icon="ui-icon-pencil">
+							<f:setPropertyActionListener value="#{c}" 
+								target="#{clienteBean.cliente}" />
+						</p:commandButton>
+						<p:commandButton action="#{listaClienteBean.excluir}"
+							icon="ui-icon-trash">
+							<f:setPropertyActionListener value="#{c.codigo}"
+								target="#{listaClienteBean.codigo}" />
+						</p:commandButton>
 					</p:column>
 				</p:dataTable>
 			</p:panel>

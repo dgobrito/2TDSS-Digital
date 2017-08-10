@@ -7,11 +7,12 @@
 
 	<ui:composition template="_template.xhtml">
 		<ui:define name="container">
-			<p:panel header="Cadastro de Cliente"
+			<p:panel header="#{clienteBean.cliente.codigo==0?'Cadastro':'Edição'} de Cliente"
 				toggleable="true">
 				<h:form>
 					<p:messages/>
 					<p:growl/>
+					<h:inputHidden value="#{clienteBean.cliente.codigo}" />
 					<h:panelGrid columns="2">
 						<p:outputLabel value="Nome" for="nome"/>
 						<p:inputText value="#{clienteBean.cliente.nome}" id="nome"/>
