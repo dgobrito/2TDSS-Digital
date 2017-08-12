@@ -5,15 +5,15 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-
-import org.primefaces.component.dashboard.Dashboard;
 
 import br.com.fiap.bo.ClienteBO;
 import br.com.fiap.entity.Cliente;
 import br.com.fiap.exception.DBException;
 
 @ManagedBean
+@ViewScoped
 public class ListaClienteBean {
 
 	private List<Cliente> lista;

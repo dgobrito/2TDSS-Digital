@@ -30,6 +30,15 @@ public class ClienteDAOImpl extends GenericDAOImpl<Cliente, Integer> implements 
 				.getResultList();
 	}
 
+	@Override
+	public long contarPorRating(int rating) {
+		return em.createQuery("select count(c) "
+				+ "from Cliente c where "
+				+ "c.rating = :r",Long.class)
+				.setParameter("r", rating)
+				.getSingleResult();
+	}
+
 	
 
 }

@@ -89,6 +89,11 @@ public class ClienteBO {
 		return dao.completarPorNome(texto);
 	}
 	
+	public long buscarPorRating(int rating){
+		ClienteDAO dao = new ClienteDAOImpl(fabrica.createEntityManager());
+		return dao.contarPorRating(rating);
+	}
+	
 }
 
 
