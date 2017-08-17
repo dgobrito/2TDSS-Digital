@@ -94,6 +94,11 @@ public class ClienteBO {
 		return dao.contarPorRating(rating);
 	}
 	
+	public long contarPorMes(int mes){
+		ClienteDAO dao = new ClienteDAOImpl(fabrica.createEntityManager());
+		return dao.contarPorMes(mes);
+	}
+	
 }
 
 

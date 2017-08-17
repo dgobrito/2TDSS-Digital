@@ -39,6 +39,17 @@ public class ClienteDAOImpl extends GenericDAOImpl<Cliente, Integer> implements 
 				.getSingleResult();
 	}
 
+	@Override
+	public long contarPorMes(int mes) {		
+		return em.createQuery("select count(c) from Cliente c "
+				+ "where month(c.dataNascimento) = :m",Long.class)
+				.setParameter("m", mes)
+				.getSingleResult();
+	}
+
 	
 
 }
+
+
+

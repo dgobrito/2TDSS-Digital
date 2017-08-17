@@ -1,17 +1,28 @@
 package br.com.fiap.bean;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.Calendar;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 import br.com.fiap.bo.ClienteBO;
 import br.com.fiap.entity.Cliente;
 import br.com.fiap.exception.DBException;
 
 @ManagedBean
+@SessionScoped
 public class ClienteBean {
 
 	private Cliente cliente;
@@ -24,6 +35,41 @@ public class ClienteBean {
 		cliente = new Cliente();
 		cliente.setDataNascimento(Calendar.getInstance());
 		bo = new ClienteBO();
+	}
+	
+	public StreamedContent getFoto(){
+		DefaultStreamedContent content = new DefaultStreamedContent();
+		content.setContentType("image/jpg");
+		
+		try {
+			if (FacesContext.getCurrentInstance().getRenderResponse() ||
+					cliente.getFoto() == null){
+				content.setStream(new FileInputStream("C:\\arquivos\\foto.jpg"));
+			}else{
+				content.setStream(
+					new FileInputStream("C:\\arquivos\\" + cliente.getFoto()));
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return content;
+	}
+	
+	public void subir(FileUploadEvent event){
+		try {
+			//recuperar o nome do arquivo
+			String nome = event.getFile().getFileName();
+			//Cria o arquivo
+			File file = new File("C:\\arquivos\\", nome);
+			//Escreve o conteudo no arquivo
+			FileOutputStream stream = new FileOutputStream(file);
+			stream.write(event.getFile().getContents());
+			stream.close();
+			//Coloca o nome do arquivo no cliente 
+			cliente.setFoto(nome);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public String cadastrar(){

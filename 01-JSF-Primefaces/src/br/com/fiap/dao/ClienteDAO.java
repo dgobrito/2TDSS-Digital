@@ -13,4 +13,6 @@ public interface ClienteDAO
 	
 	long contarPorRating(int rating);
 	
+	long contarPorMes(int mes);
+	
 }
