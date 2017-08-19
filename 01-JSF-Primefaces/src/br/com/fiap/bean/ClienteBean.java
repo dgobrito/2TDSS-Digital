@@ -1,5 +1,6 @@
 package br.com.fiap.bean;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -29,12 +30,21 @@ public class ClienteBean {
 	
 	private ClienteBO bo;
 	
+	public String abrirCadastro(){
+		criaCliente();
+		return "cliente?faces-redirect=true";
+	}
+	
 	@PostConstruct
 	private void init(){
 		//Inicializando os objetos
+		criaCliente();
+		bo = new ClienteBO();
+	}
+
+	private void criaCliente() {
 		cliente = new Cliente();
 		cliente.setDataNascimento(Calendar.getInstance());
-		bo = new ClienteBO();
 	}
 	
 	public StreamedContent getFoto(){
@@ -46,8 +56,10 @@ public class ClienteBean {
 					cliente.getFoto() == null){
 				content.setStream(new FileInputStream("C:\\arquivos\\foto.jpg"));
 			}else{
+				//content.setStream(
+				//	new FileInputStream("C:\\arquivos\\" + cliente.getFoto()));
 				content.setStream(
-					new FileInputStream("C:\\arquivos\\" + cliente.getFoto()));
+					new ByteArrayInputStream(cliente.getFoto()));
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -56,7 +68,9 @@ public class ClienteBean {
 	}
 	
 	public void subir(FileUploadEvent event){
-		try {
+		cliente.setFoto(event.getFile().getContents());
+		//Grava a foto no disco do servidor
+		/*try {
 			//recuperar o nome do arquivo
 			String nome = event.getFile().getFileName();
 			//Cria o arquivo
@@ -69,7 +83,7 @@ public class ClienteBean {
 			cliente.setFoto(nome);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 	
 	public String cadastrar(){
@@ -86,6 +100,7 @@ public class ClienteBean {
 			e.printStackTrace();
 			msg = new FacesMessage("Erro..");
 		}
+		criaCliente();
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 		FacesContext.getCurrentInstance().getExternalContext()
 								.getFlash().setKeepMessages(true);
