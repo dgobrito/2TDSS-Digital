@@ -1,6 +1,7 @@
 <%@ tag language="java" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ attribute name="title" required="true" %>    
+<%@ attribute name="title" required="true" %> 
+<%@ attribute name="scripts" fragment="true" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -43,6 +44,7 @@ href="<c:url value="/resources/css/bootstrap.min.css"/>"/>
 		<jsp:doBody/>
 	</div>
 
+<p class="text-center">Todos os direitos reservados</p>
 
 <script type="text/javascript"
 src="<c:url value="/resources/js/jquery-3.2.1.min.js"/>">
@@ -50,6 +52,8 @@ src="<c:url value="/resources/js/jquery-3.2.1.min.js"/>">
 <script type="text/javascript"
 src="<c:url value="/resources/js/bootstrap.min.js"/>">
 </script>
+
+<jsp:invoke fragment="scripts"></jsp:invoke>
 
 </body>
 </html>

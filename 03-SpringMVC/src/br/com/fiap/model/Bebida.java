@@ -7,18 +7,24 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-@SequenceGenerator(name="seqPrato",sequenceName="SQ_PRATO",allocationSize=1)
-public class Prato {
+@SequenceGenerator(name="seqBebida",sequenceName="SQ_BEBIDA",allocationSize=1)
+public class Bebida {
 
 	@Id
-	@GeneratedValue(generator="seqPrato",strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(generator="seqBebida",strategy=GenerationType.SEQUENCE)
 	private int codigo;
 	
 	private String nome;
 	
 	private double preco;
-	
-	private float peso;
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
 
 	public String getNome() {
 		return nome;
@@ -35,20 +41,5 @@ public class Prato {
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
-
-	public float getPeso() {
-		return peso;
-	}
-
-	public void setPeso(float peso) {
-		this.peso = peso;
-	}
-
-	public int getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
+	
 }
