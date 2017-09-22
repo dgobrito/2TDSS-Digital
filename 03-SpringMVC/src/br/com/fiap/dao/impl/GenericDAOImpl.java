@@ -47,7 +47,7 @@ public class GenericDAOImpl<T,K> implements GenericDAO<T, K>{
 	public T pesquisar(K codigo) {
 		return em.find(classe, codigo);
 	}
-	
+
 	@Override
 	public List<T> listar() {
 		return em.createQuery("from " + classe.getName(),classe).getResultList();

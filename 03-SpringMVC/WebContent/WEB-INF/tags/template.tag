@@ -1,7 +1,9 @@
 <%@ tag language="java" pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ attribute name="title" required="true" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ attribute name="title" required="true" %>
+
 <%@ attribute name="scripts" fragment="true" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,37 +11,39 @@
 <title>${title }</title>
 
 <link rel="stylesheet" type="text/css"
-href="<c:url value="/resources/css/bootstrap.min.css"/>"/>
+	href="<c:url value="/resources/css/bootstrap.min.css"/>">
 
 </head>
 <body>
+	<!-- navbar -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">FIAP</a>
+  <a class="navbar-brand" href="<c:url value="/"></c:url>">FIAP</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Prato
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="nav-link" 
-        	href="<c:url value="/prato/cadastrar"></c:url>">Cadastrar</a>
-          <a class="nav-link" 
-        	href="<c:url value="/prato/listar"></c:url>">Listar</a>
-        </div>
+      <li class="nav-item">
+        <a class="nav-link" href="<c:url value="/cerveja/cadastrar"></c:url>">Cadastro de Cerveja</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<c:url value="/cerveja/listar"></c:url>">Cervejas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<c:url value="/petisco/cadastrar"></c:url>">Cadastro de Petisco</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<c:url value="/petisco/listar"></c:url>">Petiscos</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Bebidas
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown link
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-           <a class="nav-link" 
-        	href="<c:url value="/bebida/cadastrar"></c:url>">Cadastrar Bebida</a>
-          <a class="nav-link" 
-        	href="<c:url value="/bebida/listar"></c:url>">Bebidas</a>
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </li>
     </ul>
@@ -52,17 +56,24 @@ href="<c:url value="/resources/css/bootstrap.min.css"/>"/>
 	<div class="container">
 		<jsp:doBody/>
 	</div>
-
-<p class="text-center">Todos os direitos reservados</p>
-
+	<p class="text-center">Todos os direitos reservados</p>
+	
 <script type="text/javascript"
 src="<c:url value="/resources/js/jquery-3.2.1.min.js"/>">
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script type="text/javascript"
 src="<c:url value="/resources/js/bootstrap.min.js"/>">
-</script>
+</script>	
+
+
 <jsp:invoke fragment="scripts"></jsp:invoke>
 
 </body>
 </html>
+
+
+
+
+
+
