@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 <tag:template title="Lista de Cerveja">
@@ -12,6 +13,7 @@
 			<th>Nome</th>
 			<th>Preço</th>
 			<th>Tipo</th>
+			<th>Validade</th>
 			<th></th>
 		</tr>
 		<c:forEach items="${lista }" var="c">
@@ -19,6 +21,9 @@
 				<td>${c.nome }</td>
 				<td>${c.preco }</td>
 				<td>${c.tipo }</td>
+				<td>
+					<fmt:formatDate value="${c.validade.time}" pattern="dd/MM/yyyy"/>					
+				</td>
 				<td>
 					<c:url var="link" value="/cerveja/editar/${c.codigo }"/>
 					<a href="${link}" class="btn btn-primary btn-sm">Editar</a>

@@ -27,6 +27,18 @@
 				<form:input path="tipo" cssClass="form-control"/>
 				<form:errors path="tipo"/>		
 			</div>
+			<div class="form-group">
+				<form:label path="validade">Validade</form:label>
+				<form:input path="validade" cssClass="form-control"/>
+				<form:errors path="validade"/>		
+			</div>
+			<div class="form-group">
+				<form:label path="fabricante">Fabricante</form:label>
+				<form:select path="fabricante.codigo" cssClass="form-control">
+					<form:options items="${lista }" 
+							itemLabel="nome" itemValue="codigo"/>
+				</form:select>
+			</div>
 			<input type="submit" value="Cadastrar"
 				class="btn btn-primary">
 		</form:form>

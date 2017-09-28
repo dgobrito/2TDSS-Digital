@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,6 +30,9 @@ public class Cerveja {
 	
 	@DecimalMin("0")
 	private double preco;
+	
+	@ManyToOne
+	private Fabricante fabricante;
 	
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="dd/MM/yyyy")
@@ -75,6 +79,14 @@ public class Cerveja {
 
 	public void setValidade(Calendar validade) {
 		this.validade = validade;
+	}
+
+	public Fabricante getFabricante() {
+		return fabricante;
+	}
+
+	public void setFabricante(Fabricante fabricante) {
+		this.fabricante = fabricante;
 	}
 	
 }

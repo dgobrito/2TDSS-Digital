@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.fiap.dao.CervejaDAO;
+import br.com.fiap.dao.FabricanteDAO;
 import br.com.fiap.exception.IdNotFoundException;
 import br.com.fiap.model.Cerveja;
 
@@ -23,6 +24,9 @@ public class CervejaController {
 	
 	@Autowired //Injeção de dependencia
 	private CervejaDAO dao;
+	
+	@Autowired
+	private FabricanteDAO fabricanteDao;
 	
 	@Transactional
 	@PostMapping("excluir")
@@ -63,6 +67,7 @@ public class CervejaController {
 	@GetMapping("cadastrar")
 	public ModelAndView abrirForm(){
 		return new ModelAndView("cerveja/cadastro")
+						.addObject("lista", fabricanteDao.listar())
 						.addObject("cerveja", new Cerveja());
 	}
 	
