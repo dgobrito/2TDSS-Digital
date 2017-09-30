@@ -14,6 +14,8 @@
 			<th>Preço</th>
 			<th>Tipo</th>
 			<th>Validade</th>
+			<th>Fabricante</th>
+			<th>Temperatura</th>
 			<th></th>
 		</tr>
 		<c:forEach items="${lista }" var="c">
@@ -24,6 +26,8 @@
 				<td>
 					<fmt:formatDate value="${c.validade.time}" pattern="dd/MM/yyyy"/>					
 				</td>
+				<td>${c.fabricante.nome }</td>
+				<td>${c.temperatura.label }</td>
 				<td>
 					<c:url var="link" value="/cerveja/editar/${c.codigo }"/>
 					<a href="${link}" class="btn btn-primary btn-sm">Editar</a>

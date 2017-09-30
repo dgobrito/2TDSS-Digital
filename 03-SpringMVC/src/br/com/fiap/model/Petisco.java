@@ -21,7 +21,7 @@ public class Petisco {
 	private String nome;
 	
 	@DecimalMin("0")
-	private double valor;
+	private float valor;
 
 	public int getCodigo() {
 		return codigo;
@@ -39,11 +39,11 @@ public class Petisco {
 		this.nome = nome;
 	}
 
-	public double getValor() {
+	public float getValor() {
 		return valor;
 	}
 
-	public void setValor(double valor) {
+	public void setValor(float valor) {
 		this.valor = valor;
 	}
 	

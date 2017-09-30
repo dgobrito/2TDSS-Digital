@@ -36,6 +36,9 @@
       <li class="nav-item">
         <a class="nav-link" href="<c:url value="/petisco/listar"></c:url>">Petiscos</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<c:url value="/fabricante/cadastrar"></c:url>">Cadastrar Fabricante</a>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown link
@@ -46,11 +49,7 @@
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    </ul> 
   </div>
 </nav>
 	<div class="container">

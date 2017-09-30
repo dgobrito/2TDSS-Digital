@@ -17,6 +17,7 @@ import br.com.fiap.dao.CervejaDAO;
 import br.com.fiap.dao.FabricanteDAO;
 import br.com.fiap.exception.IdNotFoundException;
 import br.com.fiap.model.Cerveja;
+import br.com.fiap.model.Temperatura;
 
 @Controller
 @RequestMapping("/cerveja")
@@ -68,6 +69,7 @@ public class CervejaController {
 	public ModelAndView abrirForm(){
 		return new ModelAndView("cerveja/cadastro")
 						.addObject("lista", fabricanteDao.listar())
+						.addObject("graus", Temperatura.values())
 						.addObject("cerveja", new Cerveja());
 	}
 	
@@ -78,7 +80,8 @@ public class CervejaController {
 			RedirectAttributes redirect){
 		
 		if (result.hasErrors()){
-			return new ModelAndView("cerveja/cadastro");
+			return new ModelAndView("cerveja/cadastro")
+					.addObject("lista", fabricanteDao.listar());
 		}else{
 			dao.cadastrar(cerveja);
 			ModelAndView retorno = new ModelAndView("redirect:/cerveja/listar");

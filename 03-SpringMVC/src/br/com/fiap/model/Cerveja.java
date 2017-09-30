@@ -3,6 +3,8 @@ package br.com.fiap.model;
 import java.util.Calendar;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +31,7 @@ public class Cerveja {
 	private String nome;
 	
 	@DecimalMin("0")
-	private double preco;
+	private float preco;
 	
 	@ManyToOne
 	private Fabricante fabricante;
@@ -41,6 +43,8 @@ public class Cerveja {
 	@NotBlank
 	private String tipo;
 
+	private Temperatura temperatura;
+
 	public String getNome() {
 		return nome;
 	}
@@ -49,11 +53,11 @@ public class Cerveja {
 		this.nome = nome;
 	}
 
-	public double getPreco() {
+	public float getPreco() {
 		return preco;
 	}
 
-	public void setPreco(double preco) {
+	public void setPreco(float preco) {
 		this.preco = preco;
 	}
 
@@ -87,6 +91,14 @@ public class Cerveja {
 
 	public void setFabricante(Fabricante fabricante) {
 		this.fabricante = fabricante;
+	}
+
+	public Temperatura getTemperatura() {
+		return temperatura;
+	}
+
+	public void setTemperatura(Temperatura temperatura) {
+		this.temperatura = temperatura;
 	}
 	
 }

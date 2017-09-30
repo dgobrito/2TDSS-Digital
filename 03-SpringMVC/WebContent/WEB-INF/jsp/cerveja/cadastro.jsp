@@ -39,6 +39,12 @@
 							itemLabel="nome" itemValue="codigo"/>
 				</form:select>
 			</div>
+			<div class="form-group">
+				<form:label path="temperatura">Temperatura</form:label>
+				<form:select path="temperatura" cssClass="form-control">
+					<form:options items="${graus}" itemLabel="label"/>
+				</form:select>
+			</div>
 			<input type="submit" value="Cadastrar"
 				class="btn btn-primary">
 		</form:form>
